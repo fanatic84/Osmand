@@ -31,6 +31,7 @@ import net.osmand.plus.views.FavoritesLayer;
 import net.osmand.plus.views.GPXLayer;
 import net.osmand.plus.views.MapControlsLayer;
 import net.osmand.plus.views.MapInfoLayer;
+import net.osmand.plus.views.MapSearchLayer;
 import net.osmand.plus.views.MapTileLayer;
 import net.osmand.plus.views.OsmBugsLayer;
 import net.osmand.plus.views.OsmandMapTileView;
@@ -46,6 +47,8 @@ import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -74,6 +77,7 @@ public class MapActivityLayers {
 	private ContextMenuLayer contextMenuLayer;
 	private RouteInfoLayer routeInfoLayer;
 	private MapControlsLayer mapControlsLayer;
+	private MapSearchLayer mapSearchLayer;
 
 	public MapActivityLayers(MapActivity activity) {
 		this.activity = activity;
@@ -136,11 +140,12 @@ public class MapActivityLayers {
 		// 10. route info layer
 		routeInfoLayer = new RouteInfoLayer(routingHelper, (LinearLayout) activity.findViewById(R.id.RouteLayout));
 		mapView.addLayer(routeInfoLayer, 10);
-		
-		// 11. route info layer
+		// 11. controler layer
 		mapControlsLayer = new MapControlsLayer(activity);
 		mapView.addLayer(mapControlsLayer, 11);
-
+		// 12. search layer
+		mapSearchLayer = new MapSearchLayer();
+		mapView.addLayer(mapSearchLayer, 12);
 	}
 	
 	
